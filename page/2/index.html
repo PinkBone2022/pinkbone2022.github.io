@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>追求真实</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="种一棵树最好的时间是十年前，其次是现在">
+<meta property="og:type" content="website">
+<meta property="og:title" content="追求真实">
+<meta property="og:url" content="https://pinkbone2022.github.io/page/2/index.html">
+<meta property="og:site_name" content="追求真实">
+<meta property="og:description" content="种一棵树最好的时间是十年前，其次是现在">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="pinkbone">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="追求真实" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">追求真实</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">种一棵树最好的时间是十年前，其次是现在</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://pinkbone2022.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-计算机网络-第七章-网络安全-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-07-17T08:55:33.000Z" itemprop="datePublished">2020-07-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E7%AC%94%E8%AE%B0/">计算机网络 第七章 网络安全 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : 攻击与安全</p>
+<p><strong>概述</strong> :</p>
+<ol>
+<li>计算机网络面临的安全性威胁和计算机网络安全的主要问题</li>
+<li>对称秘钥密码体制和公钥密码体制的特点</li>
+<li>数字签名与鉴别的概念</li>
+<li>网络层安全协议 IPsec 协议族和运输层安全协议 SSL/TLS 的要点</li>
+<li>应用层电子邮件的安全措施</li>
+<li>系统安全: 防火墙与入侵检测</li>
+</ol>
+<h3 id="网络安全问题"><a href="#网络安全问题" class="headerlink" title="网络安全问题"></a>网络安全问题</h3><pre class="mermaid">graph LR
+A[攻击] --> B[被动攻击]
+A[攻击] --> C[主动攻击]</pre>
+<p><strong>被动攻击</strong> : 被动攻击是指攻击者从网络上窃听他人的通信内容。通常称为 <strong><em>截获</em></strong><br>截获并分析 <strong><em>协议数据单元 PDU</em></strong> 的信息(控制信息、地址、身份)进行 <strong><em>流量分析 traffic analysis</em></strong><br><strong>主动攻击</strong> :<br>a. 篡改: 包括 篡改报文、中断报文、伪造报文<br>b. 恶意程序: 病毒 virus、蠕虫 worm、特洛伊木马 Trojan horse、逻辑炸弹 logic bomb、后门入侵 backdoor knocking、流氓软件<br>c. 拒绝服务: Denial of Service DoS, 大量请求导致源服务器拒绝提供服务不再工作, 网络带宽攻击、交换机中毒</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/07/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pinkbone2022.github.io/2020/07/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E7%AC%94%E8%AE%B0/" data-id="cladgk6jh000xmgsk78yg50a9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-React-学习-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-07-09T09:45:19.000Z" itemprop="datePublished">2020-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/">React 学习 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>react 解决复用方式 :<br>render props / 高阶组件 (需要重新组织组件结构)<br>hooks<br>context<br>memoized</p>
+<h2 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h2><p><strong>简介</strong>:</p>
+<ol>
+<li>Hook 使你在无需修改组件结构的情况下复用状态逻辑</li>
+<li>Hook 使你在不编写 class 的情况下可以使用 state 以及更多的 React 特性</li>
+<li>在新的代码中同时使用 Hook 和 class</li>
+<li>Hook 使用了 js 的闭包机制</li>
+</ol>
+<p><strong>概览</strong>:</p>
+<ol>
+<li>State Hook<br>内置的 Hook: useState…<br>useState: 更新 state 是直接替换而不是合并<br>useState 可以传入一个函数，React 只会在首次渲染时调用这个函数<br>创建自己的 Hook: 复用不同组件之间的状态逻辑</li>
+<li>Effect Hook<br>Effect 副作用、作用，告诉 React 函数组件需要在渲染后执行某些操作<br>useEffect: 注册一个副作用函数，可以执行副作用操作或者取消副作用(取消订阅)<br>effect 可选清除机制<br>useEffect 副作用函数可以通过返回一个清除函数来指定如何清除副作用<br>React 会在组件卸载的时候执行清除操作<br>useEffect 可在组件中多次使用<br>React 等待浏览器完成渲染之后再延迟调用 useEffect
+        
+          <p class="article-more-link">
+            <a href="/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pinkbone2022.github.io/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/" data-id="cladgk6jb000qmgsk711nb29q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-算法-第二章-排序-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-07-07T01:40:45.000Z" itemprop="datePublished">2020-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/">算法 第二章 排序 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>排序算法的额外内存开销和运行时间是同等重要的</p>
+<ul>
+<li>排序算法可以分为两类:</li>
+</ul>
+<ol>
+<li>除了函数调用所需的栈和固定数目的实例变量之外无需额外内存的 <strong>原地排序算法</strong></li>
+<li>需要额外内存空间来存储另一份数组副本的其他排序算法</li>
+</ol>
+<h3 id="初级排序算法-选择排序、插入排序、希尔排序"><a href="#初级排序算法-选择排序、插入排序、希尔排序" class="headerlink" title="初级排序算法 : 选择排序、插入排序、希尔排序"></a>初级排序算法 : 选择排序、插入排序、希尔排序</h3><h5 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h5><p>找到剩余元素的最小值，分别和第一个元素、第二个元素…调换位置，不断地选择剩余元素之中的最小者</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">select_sort</span>(<span class="params">arr: array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> min = i</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i+<span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (less(arr[j], arr[min]))</span><br><span class="line">        min = j</span><br><span class="line">    &#125;</span><br><span class="line">    swap(arr, i, min)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>排序轨迹</strong> : N x N 的表格</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pinkbone2022.github.io/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/" data-id="cladgk6jf000vmgskf4o80ry5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-计算机网络-第六章-应用层-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-07-02T02:57:03.000Z" itemprop="datePublished">2020-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第六章 应用层 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>概述</em></strong> :</p>
+<ol>
+<li>域名系统 DNS — 从域名解析出 IP 地址</li>
+<li>万维网和 HTTP 协议，以及万维网的两种不同的信息搜索引擎</li>
+<li>电子邮件的传送过程，SMTP 协议和 POP3 协议、IMAP 协议使用的场合</li>
+<li>动态主机配置 DHCP 的特点</li>
+<li>网络管理的三个组成部分（ SNMP 本身、管理信息结构 SMI 和管理信息库 MIB ）的作用</li>
+<li>系统调用和应用编程接口的基本概念</li>
+<li>P2P 文件系统</li>
+</ol>
+<h4 id="域名系统-DNS-Domain-Name-System"><a href="#域名系统-DNS-Domain-Name-System" class="headerlink" title="域名系统 DNS  Domain Name System"></a>域名系统 DNS  Domain Name System</h4><p>DNS 为互联网的各种网络应用提过了核心的服务<br><strong>域名结构</strong><br>由 <strong>标号(label)</strong> 序列组成，各标号之间用 <strong>点.</strong> 隔开<br>完整域名不超过 255 个字符<br><img src="/images/%E5%9F%9F%E5%90%8D%E7%BB%93%E6%9E%84.jpeg" alt=""><br>IPv4\IPv6 分别是 32 位 128 位，都是定长，而域名是不定长的，计算机处理起来比较麻烦<br><strong>反向域名</strong> : 域名反向解析即从IP地址到域名的映射<br><strong>分布式 DNS 系统</strong><br><strong>域名树</strong><br>为了便于记忆，人们愿意把用作邮件服务器的计算机取名为 mail, 而把用作网站服务器的计算机取名为 www<br><strong>域名服务器</strong><br><strong><em>根域名服务器</em></strong><br><strong><em>顶级域名服务器</em></strong><br><strong><em>权限域名服务器</em></strong><br><strong><em>本地域名服务器</em></strong><br>DNS 按区划分权限范围<br>每一个 <strong>区(zone)</strong> 设置相应的 <strong><em>权限域名服务器(authoritative name server)</em></strong><br><strong>高速缓存</strong><br>主机 在启动时从 本地域名服务器 下载域名和地址的全部数据库，维护存放自己最近使用的域名的 高速缓存，并且只在从缓存中找不到名字时才使用域名服务器。<br><img src="/images/DNS%E6%9F%A5%E8%AF%A2%E4%B8%BE%E4%BE%8B.jpeg" alt=""></p>
+        
+          <p class="article-more-link">
+            <a href="/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pinkbone2022.github.io/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="cladgk6jj0011mgsk3cii26ih" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Vue-学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-07-01T01:52:20.000Z" itemprop="datePublished">2020-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vue 学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>要求</strong> : </p>
+<ol>
+<li>Vue\Vue CLI 官方文档 要求精读一遍，多查资料多扩展</li>
+<li>尽量以代码的形式解决不懂的地方</li>
+</ol>
+<hr>
+<p>如果你想给一个Vue组件添加生命周期函数有3个办法：</p>
+<p>在Vue选项中添加<br>在模板中通过@hooks:created这种形式<br>vm.$on(‘hooks:created’, cb)或者vm.$once(‘hooks:created’, cb)</p>
+<p>我们可以把组件区分为两类：一类是偏视图表现的 (presentational)，一类则是偏逻辑的 (logical)。我们推荐在前者中使用模板，在后者中使用 JSX 或渲染函数。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pinkbone2022.github.io/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cladgk6jc000rmgskavt8fo62" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS-中的-this" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/" class="article-date">
+  <time datetime="2020-06-28T02:10:40.000Z" itemprop="datePublished">2020-06-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/">JS 中的 this</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : 词法作用域   this   箭头函数<br>bind可以修正SetTimeout和SetInterval的回调函数的this指向</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// setTimeout setInterval 回调函数 this 的指向</span></span><br><span class="line"><span class="comment">// 1. this 值分配给封闭变量</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span></span><br><span class="line">  that.age = <span class="number">1</span></span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// that 指向的是实例对象</span></span><br><span class="line">    that.age++</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="comment">// 2. 使用 绑定函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">1</span></span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// that 指向的是实例对象</span></span><br><span class="line">    <span class="keyword">this</span>.age++</span><br><span class="line">  &#125;.bind(<span class="keyword">this</span>), <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="comment">// 3. 使用 箭头函数：箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">1</span></span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// that 指向的是实例对象</span></span><br><span class="line">    <span class="keyword">this</span>.age++</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person()</span><br></pre></td></tr></table></figure>
+<p><strong>箭头函数的 this 指向当前所在的 function scope (不包括箭头函数)</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this 其实是在函数域里的值</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="string">'this = '</span>, <span class="keyword">this</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于 箭头函数没有自己的this指针，通过 call() 或 apply() 方法调用一个函数时，只能传递参数(不能绑定this），他们的第一个参数会被忽略。（这种现象对于bind方法同样成立）<br>箭头函数不绑定Arguments 对象</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pinkbone2022.github.io/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/" data-id="cladgk6j8000mmgskh3k405z8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-算法-第一章-基础-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-24T06:48:58.000Z" itemprop="datePublished">2020-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/">算法 第一章 基础 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>% java RandomSeq 100 100.0 200.0 &gt; data.txt 指明标准输出流到 data.txt 文件<br>% java Average &lt; data.txt 读取文件 data.txt 作为输入流<br>% java RandomSeq 1000 100.0 200.0 | java Average 将 RandomSeq 的标准输出和 Average 的标准输入指定为同一个流，这种方式叫做 <strong>管道</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pinkbone2022.github.io/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/" data-id="cladgk6jd000tmgskafnhgrgp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-计算机网络-第五章-运输层-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-22T09:04:36.000Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第五章 运输层 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : </p>
+<h5 id="重要概念"><a href="#重要概念" class="headerlink" title="重要概念"></a>重要概念</h5><ol>
+<li>运输层为相互通信的应用进程提供逻辑通信</li>
+<li>端口和套接字的意义</li>
+<li><strong><em>无连接的 UDP</em></strong> 的特点</li>
+<li><strong><em>面向连接的 TCP</em></strong> 的特点</li>
+<li>在不可靠的网络上实现可靠传输的工作原理，停止等待协议和 ARQ 协议</li>
+<li>TCP 的滑动窗口、流量控制、拥塞控制和连接管理</li>
+</ol>
+<h4 id="运输层协议概述"><a href="#运输层协议概述" class="headerlink" title="运输层协议概述"></a>运输层协议概述</h4><p><strong><em>复用(multiplexing)</em></strong> : 不同应用进程可以使用同一个运输层协议传送数据<br><strong><em>分用(demultiplexing)</em></strong> : 运输层可以把数据正确交付不同应用进程<br><strong><em>逻辑通信</em></strong> : 运输层到运输层的逻辑平行传送数据<br><strong><em>屏蔽</em></strong> : 屏蔽了下面网络的核心细节<br><strong><em>差错检查</em></strong> : 运输层对收到的整个报文进行差错检测<br><strong><em>运输协议数据单元(TPDU)</em></strong> : Transport Protocol Data Unit 两个对等运输实体在通信时传送的数据单位，在 TCP/IP 体系中，分别称为 <strong><em>TCP 报文段(segment)</em></strong> 和 <strong><em>UDP 用户数据报</em></strong></p>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pinkbone2022.github.io/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="cladgk6ji000zmgsk3vvy9k1s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-计算机网络-第四章-网络层-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-16T05:59:34.000Z" itemprop="datePublished">2020-06-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第四章 网络层 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : 唯一前缀   Trie树   PING</p>
+<p>根据路由选择协议构造和更新路由表</p>
+<h5 id="ICMP-的应用举例"><a href="#ICMP-的应用举例" class="headerlink" title="ICMP 的应用举例"></a>ICMP 的应用举例</h5><p><strong><em>PING</em></strong> : 分组网间探测(Packet InterNet Groper) 是 ICMP 的一个重要应用，用来测试两台主机之间的连通性。PING 使用了 ICMP 回送请求与回送回答报文。PING 是应用层直接使用网络层 ICMP 的一个栗子🌰，它没有通过传输层的 TCP 或 UDP。(ping <a href="http://www.xx.com" target="_blank" rel="noopener">www.xx.com</a>)<br><img src="/images/ping%E6%96%B0%E6%B5%AA.jpeg" alt=""><br><strong><em>traceroute(UNIX)/tracert(Win)</em></strong> : 用于跟踪一个分组从源点到终点的路径。</p>
+<h3 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h3><p><strong><em>分组丢失</em></strong> : 路由器中的输入输出队列产生溢出，或者设备、线路出故障</p>
+<h5 id="路由选择协议"><a href="#路由选择协议" class="headerlink" title="路由选择协议"></a>路由选择协议</h5><p>自治系统内部和自治系统之间</p>
+<pre class="mermaid">graph LR
+A[路由选择协议] -->B(分类)
+    B --> C[内部网关协议]
+    B --> D[外部网关协议]
+    F[横向流程图]</pre>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pinkbone2022.github.io/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="cladgk6jk0012mgsk1vmn1a33" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Promise-实现一个promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" class="article-date">
+  <time datetime="2020-06-15T09:24:44.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/">Promise 实现一个promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Promise-A-规范概要"><a href="#Promise-A-规范概要" class="headerlink" title="Promise/A+ 规范概要"></a>Promise/A+ 规范概要</h4><ol>
+<li>三个状态: pending, fulfilled, rejected</li>
+<li>状态一旦由 pending 改变，就不在变化
+        
+          <p class="article-more-link">
+            <a href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pinkbone2022.github.io/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" data-id="cladgk6j9000pmgsk9l5o2bol" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页 &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/News-Review/" rel="tag">News-Review</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/News-Review/" style="font-size: 10px;">News-Review</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/15/Trump-home-raided/">Trump home &#39;raided&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/27/If-vs-Whether/">If vs Whether</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/23/Heatwaves-across-the-world/">Heatwaves across the world</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/19/Killer-salt/">Killer salt?</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/30/%E5%A6%82%E5%9B%BE/">如图</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 pinkbone<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+  </div>
+</body>
+</html>

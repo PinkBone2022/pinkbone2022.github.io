@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Http 权威指南 第六章 代理 笔记 | 追求真实</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1Web 代理(proxy)服务器 是网络的中间实体 关键词 :  Via首部  TRACE方法  代理认证   为什么使用代理？可以改善安全性，提高性能，节省费用；可以监视流过的HTTP流量，并对其进行修改 部分代理实例: 儿童过滤器 文档访问控制 安全防火墙 Web 缓存 反向代理 内容路由器 转码器 匿名者      TRACE方法 : 通过 HTTP&#x2F;1.1 的 TRACE 方法，观察请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Http 权威指南 第六章 代理 笔记">
+<meta property="og:url" content="https://pinkbone2022.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="追求真实">
+<meta property="og:description" content="1Web 代理(proxy)服务器 是网络的中间实体 关键词 :  Via首部  TRACE方法  代理认证   为什么使用代理？可以改善安全性，提高性能，节省费用；可以监视流过的HTTP流量，并对其进行修改 部分代理实例: 儿童过滤器 文档访问控制 安全防火墙 Web 缓存 反向代理 内容路由器 转码器 匿名者      TRACE方法 : 通过 HTTP&#x2F;1.1 的 TRACE 方法，观察请求">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pinkbone2022.github.io/images/%E4%BB%A3%E7%90%86%E5%92%8C%E7%BD%91%E5%85%B3%E7%9A%84%E5%8C%BA%E5%88%AB.jpeg">
+<meta property="article:published_time" content="2020-06-03T07:26:51.000Z">
+<meta property="article:modified_time" content="2021-05-30T01:31:08.399Z">
+<meta property="article:author" content="pinkbone">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pinkbone2022.github.io/images/%E4%BB%A3%E7%90%86%E5%92%8C%E7%BD%91%E5%85%B3%E7%9A%84%E5%8C%BA%E5%88%AB.jpeg">
+  
+    <link rel="alternate" href="/atom.xml" title="追求真实" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">追求真实</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">种一棵树最好的时间是十年前，其次是现在</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://pinkbone2022.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Http-权威指南-第六章-代理-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-03T07:26:51.000Z" itemprop="datePublished">2020-06-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Http 权威指南 第六章 代理 笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Web 代理(proxy)服务器 是网络的中间实体</span><br></pre></td></tr></table></figure>
+<p><strong><em>关键词</em></strong> :  Via首部  TRACE方法  代理认证</p>
+<p><img src="/images/%E4%BB%A3%E7%90%86%E5%92%8C%E7%BD%91%E5%85%B3%E7%9A%84%E5%8C%BA%E5%88%AB.jpeg" alt=""></p>
+<ul>
+<li>为什么使用代理？<br>可以改善安全性，提高性能，节省费用；<br>可以监视流过的HTTP流量，并对其进行修改</li>
+<li>部分代理实例:<ol>
+<li>儿童过滤器</li>
+<li>文档访问控制</li>
+<li>安全防火墙</li>
+<li>Web 缓存</li>
+<li>反向代理</li>
+<li>内容路由器</li>
+<li>转码器</li>
+<li>匿名者  </li>
+</ol>
+</li>
+</ul>
+<p><strong><em>TRACE方法</em></strong> : 通过 HTTP/1.1 的 TRACE 方法，观察请求报文经过了哪些代理，以及这些代理是如何修改报文的<br><strong><em>Max-Forwards</em></strong> : 剩余最大转发次数，限制 TRACE 和 OPTIONS 请求所经过的跳数<br><strong><em>OPTIONS</em></strong> : Allow 首部(服务器或指定资源支持的功能或方法)</p>
+<h4 id="代理服务器的部署"><a href="#代理服务器的部署" class="headerlink" title="代理服务器的部署"></a>代理服务器的部署</h4><ul>
+<li>部署代理服务器的几种方式:<ol>
+<li>出口代理</li>
+<li>访问(入口)代理</li>
+<li>反向代理</li>
+<li>网络交换代理<h4 id="代理是如何获取流量的？"><a href="#代理是如何获取流量的？" class="headerlink" title="代理是如何获取流量的？"></a>代理是如何获取流量的？</h4></li>
+</ol>
+</li>
+<li>四种常见方式可以使客户端流量流向代理:<ol>
+<li>修改客户端: 浏览器手工和自动的代理配置</li>
+<li>修改网络: 网络基础设施对流量进行拦截并导入代理</li>
+<li>修改 DNS 的命名空间: 替代物假扮Web服务器的名字和IP地址</li>
+<li>修改 Web服务器: 让 Web服务器 返回一条 Http重定向 命令(状态码 305)，将客户端请求重定向到一个代理上去<h4 id="客户端的代理设置"><a href="#客户端的代理设置" class="headerlink" title="客户端的代理设置"></a>客户端的代理设置</h4></li>
+</ol>
+</li>
+<li>Web浏览器都允许用户对代理的使用进行配置，包括以下几种方式:<ol>
+<li>手工配置</li>
+<li>预先配置浏览器</li>
+<li>代理的自动配置(Proxy Auto-Configuration, PAC)</li>
+<li>WPAD(Web 代理自动发现协议 Web Proxy Autodiscovery Protocol) 的代理发现</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pinkbone2022.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="cladgk6j0000emgsk5biia75b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Http 权威指南 第七章 缓存 笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Http 权威指南 第五章 Web服务器 笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/News-Review/" rel="tag">News-Review</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/News-Review/" style="font-size: 10px;">News-Review</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/15/Trump-home-raided/">Trump home &#39;raided&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/27/If-vs-Whether/">If vs Whether</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/23/Heatwaves-across-the-world/">Heatwaves across the world</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/19/Killer-salt/">Killer salt?</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/30/%E5%A6%82%E5%9B%BE/">如图</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 pinkbone<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+  </div>
+</body>
+</html>
